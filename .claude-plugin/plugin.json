@@ -1,0 +1,21 @@
+{
+  "name": "wikimedia-enterprise",
+  "version": "0.1.0",
+  "description": "Build against the Wikimedia Enterprise API: a skill that picks the right API (Snapshot, On-demand, Realtime) and the docs MCP server for exact request and response shapes.",
+  "author": {
+    "name": "Wikimedia Enterprise",
+    "url": "https://enterprise.wikimedia.com/"
+  },
+  "homepage": "https://enterprise.wikimedia.com/docs/agents/",
+  "repository": "https://github.com/wikimedia-enterprise/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "wikipedia",
+    "wikidata",
+    "wikimedia",
+    "api",
+    "mcp",
+    "datasets"
+  ],
+  "privacyPolicyUrl": "https://enterprise.wikimedia.com/privacy/"
+}

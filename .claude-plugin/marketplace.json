@@ -1,0 +1,17 @@
+{
+  "name": "wikimedia-enterprise",
+  "description": "Agent skills and the docs MCP server for the Wikimedia Enterprise API.",
+  "owner": {
+    "name": "Wikimedia Enterprise",
+    "url": "https://enterprise.wikimedia.com/"
+  },
+  "plugins": [
+    {
+      "name": "wikimedia-enterprise",
+      "source": "./",
+      "description": "Build against the Wikimedia Enterprise API: a skill that picks the right API (Snapshot, On-demand, Realtime) and the docs MCP server for exact request and response shapes.",
+      "version": "0.1.0",
+      "category": "development"
+    }
+  ]
+}

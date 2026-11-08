@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "wme-docs": {
+      "type": "http",
+      "url": "https://enterprise.wikimedia.com/mcp"
+    }
+  }
+}

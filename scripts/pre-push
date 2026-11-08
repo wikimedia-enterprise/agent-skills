@@ -1,0 +1,13 @@
+#!/bin/sh
+# Pushes to the public GitHub mirror happen only on a release: RELEASE=1 git push github main
+# Install: cp scripts/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push
+remote_url="$2"
+case "$remote_url" in
+  *github.com*)
+    if [ "$RELEASE" != "1" ]; then
+      echo "pre-push: GitHub is the public mirror; push there only on a release (RELEASE=1)." >&2
+      exit 1
+    fi
+    npm run check || exit 1
+    ;;
+esac
