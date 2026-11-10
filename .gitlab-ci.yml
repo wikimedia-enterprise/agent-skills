@@ -1,12 +1,7 @@
-variables:
-  # CI capacity is a nodepool tainted `ci-latest=true:NoSchedule`; without this
-  # toleration a job sits Pending.
-  KUBERNETES_NODE_TOLERATIONS: 'ci-latest=true:NoSchedule'
-
 default:
   # The runner tag every Growth project uses.
   tags:
-    - wme-eks-generic-dv
+    - gtm
   interruptible: true
 
 check:
