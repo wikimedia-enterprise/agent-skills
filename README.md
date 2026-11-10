@@ -42,4 +42,8 @@ Node.js 22 or later, no dependencies. `check` needs network access.
 
 ## License
 
-The code and skill text in this repository are licensed [Apache-2.0](LICENSE). Content from Wikimedia projects that you retrieve through the API carries its own license, most often CC BY-SA 4.0. See the [privacy policy](https://enterprise.wikimedia.com/privacy/) and the [API License Agreement](https://enterprise.wikimedia.com/terms/).
+Copyright 2026 Wikimedia, LLC. Licensed under the [Apache License 2.0](LICENSE). See [NOTICE](NOTICE).
+
+This tool is not covered under Wikimedia Enterprise SLA.
+
+Content from Wikimedia projects that you retrieve through the API carries its own license, most often CC BY-SA 4.0. Use of the APIs is subject to the [API License Agreement](https://enterprise.wikimedia.com/terms/).
