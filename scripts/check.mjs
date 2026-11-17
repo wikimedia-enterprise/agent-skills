@@ -10,9 +10,6 @@ const root = new URL('..', import.meta.url).pathname;
 const read = (p) => readFile(join(root, p), 'utf8');
 const readJson = async (p) => JSON.parse(await read(p));
 
-// The public mirror's own URL answers 404 until the GitHub repo is created.
-const SELF_REPO = 'https://github.com/wikimedia-enterprise/agent-skills';
-
 const failures = [];
 const fail = (where, msg) => failures.push(`${where}: ${msg}`);
 
@@ -133,8 +130,7 @@ const results = await Promise.all(
 );
 for (const [url, status] of results) {
   if (status === 200 || (API_HOSTS.test(url) && typeof status === 'number')) continue;
-  if (url.startsWith(SELF_REPO)) console.warn(`note: ${url} answered ${status} (expected until the GitHub repo exists)`);
-  else fail(url, `answered ${status}`);
+  fail(url, `answered ${status}`);
 }
 
 if (failures.length) {
