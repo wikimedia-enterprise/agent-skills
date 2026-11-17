@@ -1,6 +1,6 @@
 ---
 name: wikimedia-enterprise-api
-description: Build against the Wikimedia Enterprise API, the Wikimedia Foundation's API for Wikipedia and other Wikimedia project data (Wikidata, Wiktionary, Wikisource, Wikiquote and more) as structured JSON at scale. Use when code needs Wikipedia articles or other Wikimedia content - every article in a project (Snapshot API), single articles by name (On-demand API), edits as they happen (Realtime API), pre-parsed JSON (Structured Contents), credibility signals, project and language metadata - or needs Wikimedia Enterprise authentication. Also use when moving from the Wikimedia dumps or scraping to Wikimedia Enterprise access, or when grounding an AI application on Wikipedia.
+description: Build against the Wikimedia Enterprise API, the Wikimedia Foundation's API for Wikipedia, Wikidata and other Wikimedia project content as structured JSON at scale. Use when code needs Wikimedia content - every article in a project (Snapshot API), articles by name (On-demand API), edits as they happen (Realtime API), pre-parsed JSON (Structured Contents), credibility signals, project and language metadata - or Wikimedia Enterprise authentication. Also use when moving off the Wikimedia dumps or scraping, or when grounding an AI application on Wikipedia.
 license: Apache-2.0
 metadata:
   author: Wikimedia Enterprise
@@ -9,15 +9,13 @@ metadata:
 
 # Wikimedia Enterprise API
 
-Wikimedia Enterprise serves Wikipedia and other Wikimedia projects as JSON in one schema across every API, so code that parses an article from one API parses it from all of them. It is a product of the Wikimedia Foundation. The content is openly licensed, and every response carries machine-readable license information.
-
-This skill says which API fits a job and where the exact facts live. It leaves out limits, token lifetimes, quotas and prices on purpose: read them from the docs when you need them, because they change.
+Wikimedia Enterprise serves Wikipedia and other Wikimedia projects as JSON in one schema across every API, so code that parses an article from one API parses it from all of them. This skill says which API fits a job and where the exact facts live. It holds no limits, token lifetimes, quotas or prices because they change: read them from the docs.
 
 ## Read the docs before writing code
 
 The documentation is published for agents. Use the first of these you can reach:
 
-1. **The docs MCP server** at `https://enterprise.wikimedia.com/mcp` (read-only, no account). When its tools are connected, `search` finds a guide section, endpoint or model (exact tokens such as a field name, a status code or a path work best), `fetch` returns the full text of a result, `list_endpoints` lists every endpoint, and `get_endpoint` returns one endpoint's exact request and response shape.
+1. **The docs MCP server** at `https://enterprise.wikimedia.com/mcp` (read-only, no account). `search` finds a guide section, endpoint or model, and `get_endpoint` returns one endpoint's exact request and response shape.
 2. **The markdown pages.** Append `.md` to any `/docs/` URL, for example `https://enterprise.wikimedia.com/docs/snapshot.md`. The index is `https://enterprise.wikimedia.com/llms.txt`.
 3. **The OpenAPI definition** at `https://enterprise.wikimedia.com/docs/api/wme-api.yaml`, the source of truth for every request and response shape.
 
@@ -39,10 +37,10 @@ All three APIs share one account and one access token. The trade-offs between th
 
 - **Account.** A free account needs no credit card: `https://dashboard.enterprise.wikimedia.com/signup/`. If the user has no account, point them there; never create one for them. Free and paid allowances are in `https://enterprise.wikimedia.com/pricing.md`, and an account's own usage is on its Dashboard.
 - **Hosts.** Authentication is `https://auth.enterprise.wikimedia.com`. Metadata, Snapshot, On-demand and Realtime: Batch are `https://api.enterprise.wikimedia.com`. Realtime streams are `https://realtime.enterprise.wikimedia.com`. Each endpoint's `servers` entry in the OpenAPI definition is authoritative.
-- **Tokens.** Every data request goes over HTTPS with `Authorization: Bearer <access_token>`. There are two ways to get an access token:
+- **Tokens.** Every data request goes over HTTPS with `Authorization: Bearer <access_token>`. Get an access token one of these ways:
   - **Copied from the Dashboard**, for a first call or a short session. The user logs in to `https://dashboard.enterprise.wikimedia.com/`, clicks **Copy access token** and sets it as `ACCESS_TOKEN` in their own terminal; code reads it from that variable. The token expires, and the user copies a new one when it does. `https://enterprise.wikimedia.com/docs/index.md` (Getting Started) walks through this and the first three calls.
   - **Login and refresh**, for code that runs longer than a copied token lasts. `POST /v1/login` on the auth host with the account's username (all lowercase) and password returns an access token, a refresh token and an ID token that API requests don't use. Renew the access token with `POST /v1/token-refresh` (username and refresh token) instead of logging in again. Read `https://enterprise.wikimedia.com/docs/authentication.md` for the token lifetimes and refresh limits before writing token-handling code.
-- **Credentials.** Never ask the user for their username, password or tokens in the chat. Code that needs to log in asks for them when it runs and keeps tokens in memory, or stores them in the operating system's keychain or the platform's secrets manager. Never write them to a file (including `.env`), never hardcode them or put them in client-side code, and never print a token.
+- **Credentials.** Never ask the user for their username, password or tokens in the chat. Code reads them from the environment, the operating system's keychain or a secrets manager the user controls, or asks for them when it runs, and keeps tokens in memory or in that keychain or secrets manager. Never write them to a file (including `.env`), hardcode them, put them in client-side code or print a token.
 
 ## Identifiers
 
