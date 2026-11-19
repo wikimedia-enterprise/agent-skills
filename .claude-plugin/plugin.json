@@ -5,6 +5,7 @@
     "name": "Wikimedia Enterprise",
     "url": "https://enterprise.wikimedia.com/"
   },
+  "icon": "./.claude-plugin/icon.png",
   "homepage": "https://enterprise.wikimedia.com/docs/agents/",
   "repository": "https://github.com/wikimedia-enterprise/agent-skills",
   "license": "Apache-2.0",

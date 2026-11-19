@@ -3,6 +3,7 @@
 // terms, and every URL. Exits 1 on any failure. Needs network access; no dependencies.
 
 import { readFile, readdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { MCP_URL, initialize, liveCapabilities, mcp, registryVersion } from './mcp.mjs';
 
@@ -59,6 +60,7 @@ else {
 }
 // No version anywhere, so Claude Code versions the plugin by commit and every push reaches
 // installed copies (code.claude.com/docs/en/plugins/host-marketplace.md, Release a new version).
+if (!plugin.icon || !existsSync(plugin.icon)) fail('plugin.json', `icon "${plugin.icon}" is not a file in the repo`);
 if ('version' in plugin) fail('plugin.json', 'remove "version": a set version holds installs at their cached copy');
 if (entry && 'version' in entry) fail('marketplace.json', 'remove the entry "version": a set version holds installs at their cached copy');
 for (const [key, server] of Object.entries(mcpJson.mcpServers)) {
