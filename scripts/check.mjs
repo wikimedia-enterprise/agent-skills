@@ -56,8 +56,11 @@ const entry = market.plugins.find((p) => p.source === './');
 if (!entry) fail('marketplace.json', 'no plugin entry with source "./"');
 else {
   if (entry.name !== plugin.name) fail('marketplace.json', `entry name "${entry.name}" != plugin.json "${plugin.name}"`);
-  if (entry.version !== plugin.version) fail('marketplace.json', `entry version ${entry.version} != plugin.json ${plugin.version}`);
 }
+// No version anywhere, so Claude Code versions the plugin by commit and every push reaches
+// installed copies (code.claude.com/docs/en/plugins/host-marketplace.md, Release a new version).
+if ('version' in plugin) fail('plugin.json', 'remove "version": a set version holds installs at their cached copy');
+if (entry && 'version' in entry) fail('marketplace.json', 'remove the entry "version": a set version holds installs at their cached copy');
 for (const [key, server] of Object.entries(mcpJson.mcpServers)) {
   if (server.type !== 'http') fail('.mcp.json', `${key}: type must be "http" (a url without it is read as stdio)`);
   if (server.url !== MCP_URL) fail('.mcp.json', `${key}: url ${server.url} != ${MCP_URL}`);
