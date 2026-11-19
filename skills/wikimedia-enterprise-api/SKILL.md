@@ -50,7 +50,7 @@ Requests name a project by its identifier, such as `enwiki` for English Wikipedi
 
 - **Snapshot API.** List what is available (`/v2/snapshots`), read one snapshot's info, and request the download headers before every download. A download is a `tar.gz` holding NDJSON, one article per line. Very large projects such as English Wikipedia can be fetched in chunks. Bundles can hold a few duplicate articles: keep the one with the highest `version.identifier`.
 - **On-demand API.** Article Lookup (`/v2/articles/{name}`) takes the article name, which is case sensitive, with spaces as underscores or percent-encoding. An unfiltered name matches across every project, so filter on `is_part_of.identifier` when you want one project. Use `fields`, `filters` and `limit` to keep responses small: `https://enterprise.wikimedia.com/docs/filtering.md`. Cache responses you will request again.
-- **Realtime API.** Reconnect from where you left off with the `since` parameters, and record event IDs to drop duplicates. Parallel connections and the replay window are in the Realtime guide.
+- **Realtime API.** Reconnect from where you left off with `since`, or with `since_per_partition`, whose keys are partition numbers rather than parts, and record event IDs to drop duplicates. Parallel connections and the replay window are in the Realtime guide.
 - **Errors.** Status codes and what each means: `https://enterprise.wikimedia.com/docs/status-codes.md`. A `401` means the token is missing, invalid or expired. When calls fail without a clear reason, check `https://status.enterprise.wikimedia.com/`.
 
 ## Licensing and attribution
