@@ -17,6 +17,13 @@ claude plugin marketplace add wikimedia-enterprise/agent-skills
 claude plugin install wikimedia-enterprise@wikimedia-enterprise
 ```
 
+Claude Code doesn't auto-update plugins from this marketplace unless you turn it on: in `/plugin`, open **Marketplaces**, select `wikimedia-enterprise` and enable auto-update. Otherwise, update by hand and restart Claude Code:
+
+```bash
+claude plugin marketplace update wikimedia-enterprise
+claude plugin update wikimedia-enterprise@wikimedia-enterprise
+```
+
 **The docs MCP server on its own**: `https://enterprise.wikimedia.com/mcp`, Streamable HTTP, no account needed. Setup for each client is in [AI Agents and MCP](https://enterprise.wikimedia.com/docs/agents/).
 
 ## What's included
