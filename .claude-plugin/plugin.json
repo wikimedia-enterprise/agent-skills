@@ -1,5 +1,6 @@
 {
   "name": "wikimedia-enterprise",
+  "displayName": "Wikimedia Enterprise",
   "description": "Build against the Wikimedia Enterprise API: a skill that picks the right API (Snapshot, On-demand, Realtime) and the docs MCP server for exact request and response shapes.",
   "author": {
     "name": "Wikimedia Enterprise",
