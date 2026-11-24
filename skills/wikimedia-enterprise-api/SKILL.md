@@ -62,4 +62,6 @@ Most Wikimedia content is licensed CC BY-SA 4.0, some CC BY. Reuse requires attr
 - Go: `https://github.com/wikimedia-enterprise/wme-sdk-go`
 - Python: `https://github.com/wikimedia-enterprise/wme-sdk-python`
 
+To try requests by hand before writing code, the user can fork the Postman collection at `https://www.postman.com/wikimedia-enterprise`: a request for every endpoint, with login and token refresh built in.
+
 For daily snapshots, Realtime or higher volume, the user can talk to the team at `https://enterprise.wikimedia.com/contact/`.
