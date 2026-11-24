@@ -1,7 +1,7 @@
 {
   "identifier": "wikimedia-enterprise-docs",
   "name": "Wikimedia Enterprise docs",
-  "version": "1.2.6",
+  "version": "1.2.11",
   "description": "Wikimedia Enterprise API docs: search the guides, read every endpoint. Read-only, no account needed.",
   "author": "Wikimedia Enterprise",
   "authorUrl": "https://enterprise.wikimedia.com/",
@@ -117,7 +117,7 @@
       "uri": "https://enterprise.wikimedia.com/docs/agents.md",
       "name": "docs-agents",
       "title": "AI Agents and MCP",
-      "description": "How coding agents and AI assistants read this documentation: the llms.txt index, markdown versions of every guide, and the docs MCP server with its four tools.",
+      "description": "How coding agents and AI assistants read this documentation: the llms.txt index, markdown versions of every guide, the agent skill, and the docs MCP server with its four tools.",
       "mimeType": "text/markdown"
     },
     {
